@@ -343,8 +343,7 @@ grid.innerHTML = `<table style="width:100%;border-collapse:collapse;font-size:0.
     btn.classList.toggle('active', filters.country.includes(c));
   });
 }
- 
-// ─── COUNTRY SUMMARY ─────────────────────────────────────────────────────────
+ // ─── COUNTRY SUMMARY ─────────────────────────────────────────────────────────
 function renderCountrySummary() {
   const countries = [...new Set(INITIATIVES.map(d=>d.country))].sort();
   const grid = document.getElementById('country-summary-grid');
@@ -389,10 +388,10 @@ function renderHeatmap() {
   const labels = {'SDG12':'SDG 12','SDG13':'SDG 13','SDG14':'SDG 14','SDG15':'SDG 15'};
   let html = `
     <div class="hm-cell header">Country</div>
-    <div class="hm-cell header">SDG 12<br>RESPONSIBLE CONSUMPTION AND PRODUCTION</div>
-    <div class="hm-cell header">SDG 13<br>CLIMATE ACTION</div>
-    <div class="hm-cell header">SDG 14<br>LIFE BELOW WATER</div>
-    <div class="hm-cell header">SDG 15<br>LIFE ON LAND</div>
+    <div class="hm-cell header">SDG 12<br>Consumption</div>
+    <div class="hm-cell header">SDG 13<br>Climate</div>
+    <div class="hm-cell header">SDG 14<br>Oceans</div>
+    <div class="hm-cell header">SDG 15<br>Land</div>
   `;
   countries.forEach(country => {
     const inits = INITIATIVES.filter(d=>d.country===country);
@@ -429,11 +428,20 @@ function renderInsights() {
       <div class="insight-num bad">${pct}%</div>
       <div class="insight-text">of all SEA initiatives address SDG 14 — Life Below Water — despite Southeast Asia holding the planet's highest marine biodiversity.</div>
     </div>
- 
+    <div class="insight-card">
+      <div class="insight-label">Countries with zero SDG 14</div>
+      <div class="insight-num bad">${noOcean.length}</div>
+      <div class="insight-text">${noOcean.join(', ')} — have no youth-led ocean initiatives at all. Laos is landlocked; Thailand's absence is striking given its coastal economy.</div>
+    </div>
+    <div class="insight-card">
+      <div class="insight-label">Waste vs. Ocean focus</div>
+      <div class="insight-num warn">${wasteCt}:${oceanTopicCt}</div>
+      <div class="insight-text">Initiatives touching Waste & Resource Management vs. Ocean Ecosystems & Coral. Visible, tangible pollution dominates over invisible ecosystem collapse.</div>
+    </div>
     <div class="insight-card">
       <div class="insight-label">Sustainable Fisheries</div>
       <div class="insight-num bad">4</div>
-      <div class="insight-text">Only 4 initiatives in SEA address sustainable fisheries — despite millions of Southeast Asian livelihoods depending on fish stocks that are in measurable decline.</div>
+      <div class="insight-text">Only 4 initiatives address sustainable fisheries — despite millions of Southeast Asian livelihoods depending on fish stocks that are in measurable decline.</div>
     </div>
   `;
 }
@@ -488,11 +496,15 @@ function renderActionInsights() {
       <div class="insight-num bad">${advPct}%</div>
       <div class="insight-text">Only ${advocacy} initiatives engage in advocacy or policy work. Political constraints, authoritarian contexts, and the appeal of tangible impact all suppress this number.</div>
     </div>
-  
+    <div class="insight-card">
+      <div class="insight-label">Countries: zero advocacy</div>
+      <div class="insight-num bad">${noAdv.length}</div>
+      <div class="insight-text">${noAdv.slice(0,4).join(', ')}${noAdv.length>4?'…':''} — countries where no youth initiative engages in policy or advocacy work at all.</div>
+    </div>
     <div class="insight-card">
       <div class="insight-label">Do research / citizen science</div>
       <div class="insight-num bad">${research}</div>
-      <div class="insight-text">Across 10 countries and 220 initiatives, only ${research} engage in systematic data collection or citizen science.</div>
+      <div class="insight-text">Across 10 countries and 220 initiatives, only ${research} engage in systematic data collection or citizen science. Environmental decision-making without data is flying blind.</div>
     </div>
   `;
 }
