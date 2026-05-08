@@ -82,7 +82,13 @@
     <div id="grid-view">
       <div class="results-bar">
         <div class="results-count" id="results-count"></div>
-        <input class="search-input" type="text" placeholder="Search initiatives…" id="search-input" oninput="render()">
+   <input
+  class="search-input"
+  type="text"
+  placeholder="Search initiatives…"
+  id="search-input"
+  oninput="searchQuery=this.value; render()"
+>
       </div>
       <div class="initiative-grid" id="initiative-grid"></div>
       <div class="no-results" id="no-results" style="display:none">No initiatives match these filters.</div>
