@@ -435,6 +435,52 @@ function renderInsights() {
       <div class="insight-text">${noOcean.join(', ')} — have no youth-led ocean initiatives at all. Laos is the only landlocked country in SEA, which makes this understandable.</div>
     </div>
 
+    function renderInsights() {
+  const sdg14 = INITIATIVES.filter(d=>d.sdgs.includes('SDG14')).length;
+  const total = INITIATIVES.length;
+  const pct = Math.round(sdg14/total*100);
+
+  const noOcean = [...new Set(INITIATIVES.map(d=>d.country))].filter(c =>
+    INITIATIVES.filter(d=>d.country===c).every(d=>!d.sdgs.includes('SDG14'))
+  );
+
+  const topTopic = 'Waste & Resource Management';
+
+  const wasteCt = INITIATIVES.filter(d =>
+    d.topics.includes(topTopic)
+  ).length;
+
+  const oceanTopicCt = INITIATIVES.filter(d =>
+    d.topics.includes('Ocean Ecosystems & Coral')
+  ).length;
+
+  document.getElementById('insight-grid').innerHTML = `
+    <div class="insight-card">
+      <div class="insight-label">Ocean initiatives</div>
+      <div class="insight-num bad">${pct}%</div>
+      <div class="insight-text">
+        of all SEA initiatives address SDG 14 — Life Below Water.
+      </div>
+    </div>
+
+    <div class="insight-card">
+      <div class="insight-label">Countries with zero SDG 14</div>
+      <div class="insight-num bad">${noOcean.length}</div>
+      <div class="insight-text">
+        ${noOcean.join(', ')}
+      </div>
+    </div>
+
+    <div class="insight-card">
+      <div class="insight-label">Most dominant topic</div>
+      <div class="insight-num warn">${wasteCt}</div>
+      <div class="insight-text">
+        ${topTopic} dominates the dataset, while marine ecosystems only appear ${oceanTopicCt} times.
+      </div>
+    </div>
+  `;
+}
+
 }
 
 function renderTopicBars() {
