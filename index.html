@@ -287,6 +287,7 @@ function renderStats() {
   `;
 }
  
+ 
 // ─── MAIN RENDER ─────────────────────────────────────────────────────────────
 function render() {
   if (currentView !== 'grid') return;
@@ -310,27 +311,27 @@ function render() {
         <div class="card-name">${d.name}</div>
         <div class="card-tags">
           ${d.sdgs.map(s=>`<span class="tag ${s.toLowerCase()}">${s}</span>`).join('')}
-          ${d.types.slice(0,1).map(t=>`<span class="tag type">${t.replace('Direct Action (Community Involvement)','Direct Action').replace('Social Enterprises (Tech/Innovation)','Social Enterprise').replace('Chapter of International Organisation','Chapter of International Movement').replace('Awareness / Education (online)','Education').replace('Awareness / Education (Physical)','Education').replace('School/University Club','School Club').replace('Research / Citizen Science','Research')}</span>`).join('')}
+          ${d.types.slice(0,1).map(t=>`<span class="tag type">${t.replace('Direct Action (Community Involvement)','Direct Action').replace('Social Enterprises (Tech/Innovation)','Social Enterprise').replace('Chapter of International Organisation','Intl Chapter').replace('Awareness / Education (online)','Online Ed').replace('Awareness / Education (Physical)','Physical Ed').replace('School/University Club','School Club').replace('Research / Citizen Science','Research')}</span>`).join('')}
         </div>
         ${d.year?`<div class="card-year">Est. ${d.year}</div>`:''}
       </div>
     `).join('');
   } else {
-  grid.style.display = 'block';
-grid.innerHTML = `<table style="width:100%;border-collapse:collapse;font-size:0.82rem;background:var(--card-bg)">
-  <thead><tr style="background:var(--ink);color:var(--bg)">
-    <th style="padding:0.6rem 1rem;text-align:left;font-family:'Lora',serif;font-size:0.65rem;text-transform:uppercase;letter-spacing:0.08em;font-weight:400">Initiative</th>
-    <th style="padding:0.6rem 1rem;text-align:left;font-family:'Lora',serif;font-size:0.65rem;text-transform:uppercase;letter-spacing:0.08em;font-weight:400">Country</th>
-    <th style="padding:0.6rem 1rem;text-align:left;font-family:'Lora',serif;font-size:0.65rem;text-transform:uppercase;letter-spacing:0.08em;font-weight:400">SDGs</th>
-    <th style="padding:0.6rem 1rem;text-align:left;font-family:'Lora',serif;font-size:0.65rem;text-transform:uppercase;letter-spacing:0.08em;font-weight:400">Type</th>
-    <th style="padding:0.6rem 1rem;text-align:left;font-family:'Lora',serif;font-size:0.65rem;text-transform:uppercase;letter-spacing:0.08em;font-weight:400">Est.</th>
-  </tr></thead>`
+    grid.style.display = 'block';
+    grid.innerHTML = `<table style="width:100%;border-collapse:collapse;font-size:0.82rem;background:var(--card-bg)">
+      <thead><tr style="background:var(--ink);color:var(--bg)">
+        <th style="padding:0.6rem 1rem;text-align:left;font-family:'DM Mono',monospace;font-size:0.65rem;text-transform:uppercase;letter-spacing:0.08em;font-weight:400">Initiative</th>
+        <th style="padding:0.6rem 1rem;text-align:left;font-family:'DM Mono',monospace;font-size:0.65rem;text-transform:uppercase;letter-spacing:0.08em;font-weight:400">Country</th>
+        <th style="padding:0.6rem 1rem;text-align:left;font-family:'DM Mono',monospace;font-size:0.65rem;text-transform:uppercase;letter-spacing:0.08em;font-weight:400">SDGs</th>
+        <th style="padding:0.6rem 1rem;text-align:left;font-family:'DM Mono',monospace;font-size:0.65rem;text-transform:uppercase;letter-spacing:0.08em;font-weight:400">Type</th>
+        <th style="padding:0.6rem 1rem;text-align:left;font-family:'DM Mono',monospace;font-size:0.65rem;text-transform:uppercase;letter-spacing:0.08em;font-weight:400">Est.</th>
+      </tr></thead>
       <tbody>${filtered.map((d,i) => `
         <tr onclick="openModal(${INITIATIVES.indexOf(d)})" style="cursor:pointer;border-bottom:1px solid var(--border)" onmouseover="this.style.background='var(--highlight)'" onmouseout="this.style.background=''">
           <td style="padding:0.55rem 1rem;font-weight:500">${d.name}</td>
           <td style="padding:0.55rem 1rem;color:var(--ink-muted)">${d.country}</td>
           <td style="padding:0.55rem 1rem">${d.sdgs.map(s=>`<span class="tag ${s.toLowerCase()}">${s}</span>`).join(' ')}</td>
-          <td style="padding:0.55rem 1rem;color:var(--ink-muted);font-size:0.75rem">${(d.types[0]||'').replace('Direct Action (Community Involvement)','Direct Action').replace('Social Enterprises (Tech/Innovation)','Social Enterprises').replace('Awareness / Education (online)','Education').replace('Awareness / Education (Physical)','Education').replace('Chapter of International Organisation','Chapter of International Movement').replace('School/University Club','School Club')}</td>
+          <td style="padding:0.55rem 1rem;color:var(--ink-muted);font-size:0.75rem">${(d.types[0]||'').replace('Direct Action (Community Involvement)','Direct Action').replace('Social Enterprises (Tech/Innovation)','Social Ent.').replace('Awareness / Education (online)','Online Ed').replace('Awareness / Education (Physical)','Physical Ed').replace('Chapter of International Organisation','Intl Chapter').replace('School/University Club','School Club')}</td>
           <td style="padding:0.55rem 1rem;font-family:'DM Mono',monospace;font-size:0.7rem;color:var(--ink-muted)">${d.year||'—'}</td>
         </tr>
       `).join('')}</tbody>
@@ -388,10 +389,10 @@ function renderHeatmap() {
   const labels = {'SDG12':'SDG 12','SDG13':'SDG 13','SDG14':'SDG 14','SDG15':'SDG 15'};
   let html = `
     <div class="hm-cell header">Country</div>
-    <div class="hm-cell header">SDG 12<br>Consumption</div>
-    <div class="hm-cell header">SDG 13<br>Climate</div>
-    <div class="hm-cell header">SDG 14<br>Oceans</div>
-    <div class="hm-cell header">SDG 15<br>Land</div>
+    <div class="hm-cell header">SDG 12<br>Responsible Consumption and Production</div>
+    <div class="hm-cell header">SDG 13<br>Climate Action</div>
+    <div class="hm-cell header">SDG 14<br>Life below Water</div>
+    <div class="hm-cell header">SDG 15<br>Life on Land</div>
   `;
   countries.forEach(country => {
     const inits = INITIATIVES.filter(d=>d.country===country);
@@ -431,7 +432,7 @@ function renderInsights() {
     <div class="insight-card">
       <div class="insight-label">Countries with zero SDG 14</div>
       <div class="insight-num bad">${noOcean.length}</div>
-      <div class="insight-text">${noOcean.join(', ')} — have no youth-led ocean initiatives at all. Laos is landlocked; Thailand's absence is striking given its coastal economy.</div>
+      <div class="insight-text">${noOcean.join(', ')} — have no youth-led SDG14 initiatives at all. This makes sense as Laos is the only landlocked in all of SEA.</div>
     </div>
     <div class="insight-card">
       <div class="insight-label">Waste vs. Ocean focus</div>
@@ -441,7 +442,7 @@ function renderInsights() {
     <div class="insight-card">
       <div class="insight-label">Sustainable Fisheries</div>
       <div class="insight-num bad">4</div>
-      <div class="insight-text">Only 4 initiatives address sustainable fisheries — despite millions of Southeast Asian livelihoods depending on fish stocks that are in measurable decline.</div>
+      <div class="insight-text">Only 4 initiatives address sustainable fisheries in SEA — despite millions of SEA livelihoods depending on fish stocks that are in measurable decline.</div>
     </div>
   `;
 }
@@ -496,11 +497,7 @@ function renderActionInsights() {
       <div class="insight-num bad">${advPct}%</div>
       <div class="insight-text">Only ${advocacy} initiatives engage in advocacy or policy work. Political constraints, authoritarian contexts, and the appeal of tangible impact all suppress this number.</div>
     </div>
-    <div class="insight-card">
-      <div class="insight-label">Countries: zero advocacy</div>
-      <div class="insight-num bad">${noAdv.length}</div>
-      <div class="insight-text">${noAdv.slice(0,4).join(', ')}${noAdv.length>4?'…':''} — countries where no youth initiative engages in policy or advocacy work at all.</div>
-    </div>
+ 
     <div class="insight-card">
       <div class="insight-label">Do research / citizen science</div>
       <div class="insight-num bad">${research}</div>
