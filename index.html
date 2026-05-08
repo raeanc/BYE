@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BYE — Blindspots in Youth Environmental Efforts</title>
+<title>BYEE — Blindspots in Youth Environmental Efforts</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Lora:ital,wght@0,400..700;1,400..700&family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
 
@@ -13,7 +13,7 @@
 <body>
 
 <header>
-  <div class="logo">Blindspots in Youth Environmental Efforts (BYE!) <span>— Asia</span></div>
+  <div class="logo">Blindspots in Youth Environmental Efforts (BYEE) <span>— Asia</span></div>
   <nav>
     <a class="active" onclick="setView('grid')">Database</a>
     <a onclick="setView('country')">By Country</a>
@@ -24,7 +24,7 @@
 <div class="hero">
   <div class="hero-eyebrow"></div>
   <h1>What are Asian youths <em>overlooking or missing</em>?</h1>
-  <p class="hero-sub">BYE is an initiative mapping & researching youth-led environmental initiatives across Asia to figure out what's missing.</p>
+  <p class="hero-sub">BYEE is an initiative mapping & researching youth-led environmental initiatives across Asia to figure out what's missing.</p>
 
   <div class="stats-strip" id="stats-strip">
     <!-- filled by JS -->
@@ -102,7 +102,19 @@
     <!-- BLINDSPOT VIEW -->
     <div id="blindspot-view" style="display:none">
       <div class="bs-intro">
-        A Rawlsian reading of this data asks: behind a <strong>veil of ignorance</strong> — not knowing which country, which ecosystem, which community you'd be born into — what would a just distribution of environmental attention look like? The gaps below are not absences of initiative. They are absences of <strong>attention</strong>.
+<p> The main 4 environment-related UN Sustainable Development Goals were used as thematic frameworks:
+        
+SDG 12 — Responsible Consumption & Production
+  <br>
+SDG 13 — Climate Action
+  <br>
+SDG 14 — Life Below Water
+  <br>
+SDG 15 — Life on Land
+  <br>
+SDG categorisation is assigned based on documented activities, not self-reported by initiatives. An initiative is tagged under one main SDG, but can be tagged under two if both are equally covered by the initiative 
+SDGs outside this environmental scope (e.g. SDG 4 Education) are not tracked as primary categories.
+</p>
       </div>
 
       <div class="bs-section">
@@ -150,8 +162,8 @@
 </div>
 
 <footer>
-  <span>BYE — Blindspots in Youth Environmental Efforts</span>
-  <span>220 initiatives · 10 countries</span>
+  <span>BYEE — Blindspots in Youth Environmental Efforts</span>
+  <span>221 initiatives · 11 countries</span>
 </footer>
 
 <script>
@@ -432,13 +444,9 @@ function renderInsights() {
     <div class="insight-card">
       <div class="insight-label">Countries with zero SDG 14</div>
       <div class="insight-num bad">${noOcean.length}</div>
-      <div class="insight-text">${noOcean.join(', ')} — have no youth-led SDG14 initiatives at all. This makes sense as Laos is the only landlocked in all of SEA.</div>
+      <div class="insight-text">${noOcean.join(', ')} — has no youth-led SDG14 initiatives at all. This makes sense as Laos is the only landlocked country in all of SEA.</div>
     </div>
-    <div class="insight-card">
-      <div class="insight-label">Waste vs. Ocean focus</div>
-      <div class="insight-num warn">${wasteCt}:${oceanTopicCt}</div>
-      <div class="insight-text">Initiatives touching Waste & Resource Management vs. Ocean Ecosystems & Coral. Visible, tangible pollution dominates over invisible ecosystem collapse.</div>
-    </div>
+  
     <div class="insight-card">
       <div class="insight-label">Sustainable Fisheries</div>
       <div class="insight-num bad">4</div>
@@ -501,7 +509,7 @@ function renderActionInsights() {
     <div class="insight-card">
       <div class="insight-label">Do research / citizen science</div>
       <div class="insight-num bad">${research}</div>
-      <div class="insight-text">Across 10 countries and 220 initiatives, only ${research} engage in systematic data collection or citizen science. Environmental decision-making without data is flying blind.</div>
+      <div class="insight-text">Across 11 countries and 221 initiatives, only ${research} engage in systematic data collection or citizen science. </div>
     </div>
   `;
 }
