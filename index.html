@@ -215,7 +215,7 @@ This report situates these empirical findings within a framework of environmenta
 </div>
 
 <footer>
-  <span>BYE — Blindspots in Youth Environmental Efforts · AEYN Mentorship Programme</span>
+  <span>BYEE — Blindspots in Youth Environmental Efforts</span>
   <span id="footer-count"></span>
 </footer>
 
@@ -256,9 +256,9 @@ let gridMode = 'cards';
 const shortType = t => t
   .replace('Direct Action (Community Involvement)','Direct Action')
   .replace('Social Enterprises (Tech/Innovation)','Social Enterprise')
-  .replace('Chapter of International Organisation','Intl Chapter')
-  .replace('Awareness / Education (online)','Online Ed')
-  .replace('Awareness / Education (Physical)','Physical Ed')
+  .replace('Chapter of International Organisation','Chapter of International Organisation')
+  .replace('Awareness / Education (online)','Education')
+  .replace('Awareness / Education (Physical)','Education')
   .replace('School/University Club','School Club')
   .replace('Research / Citizen Science','Research');
 
@@ -432,10 +432,12 @@ function renderHeatmap() {
   const countries=[...new Set(INITIATIVES.map(d=>d.country))].sort();
   let html=`
     <div class="hm-cell header">Country</div>
-    <div class="hm-cell header">SDG 12<br>Consumption</div>
-    <div class="hm-cell header">SDG 13<br>Climate</div>
-    <div class="hm-cell header">SDG 14<br>Oceans</div>
-    <div class="hm-cell header">SDG 15<br>Land</div>`;
+    <div class="hm-cell header">SDG 12<br> Responsible Consumption & Production
+</div>
+    <div class="hm-cell header">SDG 13<br>Climate Action
+</div>
+    <div class="hm-cell header">SDG 14<br>Life below Water</div>
+    <div class="hm-cell header">SDG 15<br>Land on Land</div>`;
   countries.forEach(country=>{
     const inits=INITIATIVES.filter(d=>d.country===country);
     html+=`<div class="hm-cell country-label">${country}</div>`;
