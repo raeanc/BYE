@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BYE — Blindspots in Youth Environmental Efforts</title>
+<title>BYEE — Blindspots in Youth Environmental Efforts</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@300;400;500&family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
@@ -11,19 +11,19 @@
 <body>
 
 <header>
-  <div class="logo">Blindspots in Youth Environmental Efforts (BYE!) <span>— Asia</span></div>
+  <div class="logo">Blindspots in Youth Environmental Efforts (BYEE) <span>— Asia</span></div>
   <nav>
     <a class="active" onclick="setView('grid')">Database</a>
     <a onclick="setView('country')">By Country</a>
-    <a onclick="setView('blindspot')">Blind Spots</a>
+    <a onclick="setView('blindspot')">Blindspots</a>
     <a onclick="setView('about')">About</a>
   </nav>
 </header>
 
 <div class="hero">
-  <div class="hero-eyebrow">AEYN Mentorship Programme</div>
+  <div class="hero-eyebrow">Saying BYEE to blindspots!</div>
   <h1>What are Asian youth <em>overlooking or missing</em>?</h1>
-  <p class="hero-sub">BYE is an initiative mapping &amp; researching youth-led environmental initiatives across Asia to figure out what's missing.</p>
+  <p class="hero-sub">BYEE is an initiative mapping &amp; researching youth-led environmental initiatives across Asia to figure out what's missing.</p>
   <div class="stats-strip" id="stats-strip"></div>
 </div>
 
@@ -77,7 +77,14 @@
     <!-- BLIND SPOTS -->
     <div id="blindspot-view" style="display:none">
       <div class="bs-intro">
-        A Rawlsian reading of this data asks: behind a <strong>veil of ignorance</strong> — not knowing which country, which ecosystem, which community you'd be born into — what would a just distribution of environmental attention look like? The gaps below are not absences of initiative. They are absences of <strong>attention</strong>.
+    <p> The heatmap uses of 4 environment-related UN Sustainable Development Goals as the thematic framework:
+<br> SDG 12 — Responsible Consumption & Production
+<br>SDG 13 — Climate Action
+<br>SDG 14 — Life Below Water
+<br> SDG 15 — Life on Land <br>
+SDG categorisation is assigned based on documented activities, not self-reported by initiatives. An initiative is tagged under one main SDG, but can be tagged under two if both are equally covered by the initiative 
+SDGs outside this environmental scope (e.g. SDG 4 Education) are not tracked as primary categories.
+ </p> 
       </div>
 
       <div class="bs-section">
@@ -115,9 +122,20 @@
     <div id="about-view" style="display:none">
 
       <div class="about-section">
-        <div class="about-heading">What is BYE?</div>
-        <p>BYE (Blindspots in Youth Environmental Efforts) is a research database mapping youth-led environmental initiatives across Asia — not to celebrate what exists, but to identify what doesn't. The core research question: <em>What are Asian youth environmentalists paying attention to, and what are they missing?</em></p>
-        <p style="margin-top:0.8rem">The analytical framework is Rawlsian. Behind a <em>veil of ignorance</em> — not knowing which country, ecosystem, or community you'd be born into — what would a just distribution of environmental attention look like? The blind spots revealed become a map of Rawlsian injustice. Extended via Brian Barry (intergenerational justice) and Thomas Pogge, who expanded Rawls's originally domestic framework to international contexts.</p>
+        <div class="about-heading">What is BYEE?</div>
+        <p>Across Asia, youths are responding to environmental crises through an expanding ecosystem of grassroots initiatives. From founding organisations, running campaigns, and demanding accountability from governments and corporations. Yet the distribution of this activity is far from even. Certain issues, geographies, and communities consistently attract youth-led attention, while others remain largely invisible. These patterns are not random, for they reflect structural inequalities in who has the resources, freedoms, and platforms to organise, and whose environments are treated as worthy of concern.
+
+This project, BYEE (Blindspots in Youth Environmental Efforts), is a systematic attempt to map that uneven landscape. Drawing on original research across countries and territories in Asia as defined by the UN Geoscheme, it constructs a public database of youth-led environmental initiatives, categorised by geography, thematic focus, organisational type, and scope. The goal is not simply to catalogue what exists, but to surface what is absent: the communities underserved by youth environmental action, the environmental issues that receive disproportionately little attention, and the structural conditions that produce these gaps.
+
+The concept of a "blindspot" is central to this project's framing. A blindspot is not merely an absence, but one that carries normative weight. Preliminary findings suggest that youth environmental activity in Asia clusters heavily in capital cities, in wealthier and more politically open countries, and around issues that are already well-represented in global environmental discourse. Meanwhile, countries affected by conflict or authoritarian governance, communities in rural and remote regions, and environmental challenges with lower media visibility such as freshwater ecosystem degradation, glacial retreat, or sand extraction remain consistently underrepresented.
+
+This report situates these empirical findings within a framework of environmental justice. Drawing on John Rawls' Difference Principle and Veil of Ignorance, and extended through the work of Brian Barry and Thomas Pogge to international and intergenerational contexts, it asks: if we did not know where in Asia we would be born, or to which generation we would belong, what distribution of environmental attention and action would we consider just? The blindspots this project identifies are, in Rawlsian terms, a departure from what a fair distribution of environmental concern would look like — and understanding them is a prerequisite for addressing them.
+</p>
+        <p style="margin-top:0.8rem"> Note: Round 1 of research has excluded 
+        <br> - Western Asia (18) - Excluded due to ongoing conflicts which may affect the ability of youths to continue carry out initiatives.
+          <br>
+- Central Asia (5)  - Excluded due to insufficient initiatives found for meaningful analysis (attributed to youth engagement being channeled through private messaging apps like Telegram or state-sanctioned programs, rather than the public-facing grassroots platforms)</p>
+        <br> That said, I hope to be able to include them in my second round of research!
       </div>
 
       <div class="about-section">
@@ -502,11 +520,7 @@ function renderActionInsights() {
       <div class="insight-num bad">${Math.round(adv/total*100)}%</div>
       <div class="insight-text">Only ${adv} initiatives engage in advocacy or policy work. Political constraints and the appeal of tangible impact suppress this number.</div>
     </div>
-    <div class="insight-card">
-      <div class="insight-label">Countries with zero advocacy</div>
-      <div class="insight-num bad">${noAdv.length}</div>
-      <div class="insight-text">${noAdv.slice(0,5).join(', ')} — countries where no youth initiative engages in policy or advocacy at all.</div>
-    </div>
+
     <div class="insight-card">
       <div class="insight-label">Do research / citizen science</div>
       <div class="insight-num bad">${res}</div>
